@@ -6,14 +6,11 @@ const knex = require('./database/conexao');
 const yup = require('yup');
 const cors = require('cors');
 
-app.use(
-  cors({
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  })
-)
 
 app.use(express.json({ limit: '5mb'}));
+
+app.use(cors());
+
 app.use(rotas);
 
 //app.listen(3000);
