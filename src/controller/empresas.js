@@ -1,7 +1,6 @@
 const cadastroEmpresaSchema = require('../validation/cadastroEmpresaSchema')
 const knex = require('../database/conexao')
 
-//Preciso criar a rota de upgrade de imagem
 
 const test = async (req, res) =>{
     try {
