@@ -20,8 +20,6 @@ rotas.get('/avaliacoes', avaliacoes.exibirAvaliacao);
 
 rotas.post('/contatos', contatos.cadastrarContato);
 
-rotas.get('/test', empresas.test);
-
 rotas.post('/upload', uploads.upload);
 
 

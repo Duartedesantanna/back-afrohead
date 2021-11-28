@@ -27,7 +27,7 @@ CREATE TABLE avaliacoes(
   id serial NOT NULL PRIMARY KEY,
   nome_usuario varchar(30) NOT NULL,
   email text NOT NULL,
-  avaliacao varchar(1) NOT NULL,
+  avaliacao int NOT NULL,
   descritivo text,
   id_empresa int
 );

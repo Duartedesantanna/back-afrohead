@@ -23,7 +23,7 @@ const cadastrarContato = async (req, res) => {
 
         const dadosEnvio = {
             from: `${nome_usuario} <${email}>`,
-            to: '<contato.afrohead@gmail.com>',
+            to: '<contatos.afrohead@gmail.com>',
             subject: 'Mensagem de contato',
             text: mensagem
         }
