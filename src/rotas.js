@@ -16,6 +16,7 @@ rotas.get('/empresa/:id', empresas.exibirEmpresa);
 rotas.get('/empresas/:id', empresas.listarEmpresas);
 
 rotas.post('/avaliacoes', avaliacoes.cadastrarAvaliacao);
+rotas.get('/avaliacoes', avaliacoes.exibirAvaliacao);
 
 rotas.post('/contatos', contatos.cadastrarContato);
 
@@ -23,7 +24,6 @@ rotas.get('/test', empresas.test);
 
 rotas.post('/upload', uploads.upload);
 
-//rotas.post('/upload', uploads.uploads);
 
 
 module.exports = rotas;

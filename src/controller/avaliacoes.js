@@ -26,6 +26,25 @@ const cadastrarAvaliacao = async (req, res) => {
     
 }
 
+const exibirAvaliacao = async (req, res) => {
+    
+    const {id_empresa} = req.body;
+    
+    try {
+        const avaliacoes = await knex('avaliacoes').where('id_empresa', id_empresa);
+    
+        if (!avaliacoes) {
+            return res.status(400).json({ mensagem: 'Não foi encontrada nenhuma avaliação!' })
+        }
+    
+        return res.status(200).json(avaliacao)
+    
+    } catch (error) {
+        return res.status(400).json({ mensagem: error.message })
+    }
+    
+}
+
 module.exports = {
     cadastrarAvaliacao
 }
