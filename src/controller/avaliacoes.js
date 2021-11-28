@@ -46,5 +46,5 @@ const exibirAvaliacao = async (req, res) => {
 }
 
 module.exports = {
-    cadastrarAvaliacao
+    cadastrarAvaliacao, exibirAvaliacao
 }
