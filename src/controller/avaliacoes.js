@@ -41,7 +41,7 @@ const exibirAvaliacao = async (req, res) => {
     try {
         const avaliacoes = await knex('avaliacoes').where('id_empresa', id_empresa);
     
-        if (!avaliacoes) {
+        if (avaliacoes.length <= 0) {
             return res.status(400).json({ mensagem: 'Não foi encontrada nenhuma avaliação!' })
         }
     

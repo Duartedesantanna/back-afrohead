@@ -83,18 +83,17 @@ const listarEmpresas = async (req, res) => {
         let consultaEmpresas = await knex('empresas').where('bairro', id);
         const qntResultados = await knex('empresas').where('bairro', id).count('id').first();
 
-
         if(consultaEmpresas.length <= 0){
             return res.status(404).json({ mensagem: 'Não entrou nenhum resultado para a busca!'})
         }
 
         for(var i=0; i<qntResultados.count; i++){
-            console.log(consultaEmpresas[i].id);
+            //console.log(consultaEmpresas[i].id);
 
             const existeavaliacao = await knex('avaliacoes').where('id_empresa', consultaEmpresas[i].id);
 
             if(existeavaliacao.length > 0){
-                const qntAvaliacoes = await knex('avaliacoes').where('id_empresa', id).sum('avaliacao').count('avaliacao').first();
+                const qntAvaliacoes = await knex('avaliacoes').where('id_empresa', consultaEmpresas[i].id).sum('avaliacao').count('avaliacao').first();
 
                 const { sum, count} = qntAvaliacoes;
 
