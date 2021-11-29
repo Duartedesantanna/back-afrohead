@@ -80,15 +80,18 @@ const listarEmpresas = async (req, res) => {
     const {id} = req.params;
 
     try {
-        let consultaEmpresas = await knex('empresas').where('bairro', id);
-        const qntResultados = await knex('empresas').where('bairro', id).count('id').first();
+
+        const busca = `%${id}%`;        
+        
+        let consultaEmpresas = await knex('empresas').orWhereRaw('bairro ILIKE ?', [busca]).orWhereRaw('nome_empresa ILIKE ?', [busca]).orWhereRaw('logradouro ILIKE ?', [busca]).orWhereRaw('cidade ILIKE ?', [busca]).orWhereRaw('descricao ILIKE ?', [busca]).orWhereRaw('cep ILIKE ?', [busca]);
+        
+        const qntResultados = await knex('empresas').orWhereRaw('bairro ILIKE ?', [busca]).orWhereRaw('nome_empresa ILIKE ?', [busca]).orWhereRaw('logradouro ILIKE ?', [busca]).orWhereRaw('cidade ILIKE ?', [busca]).orWhereRaw('descricao ILIKE ?', [busca]).orWhereRaw('cep ILIKE ?', [busca]).count('id').first()
 
         if(consultaEmpresas.length <= 0){
             return res.status(404).json({ mensagem: 'Não entrou nenhum resultado para a busca!'})
         }
 
         for(var i=0; i<qntResultados.count; i++){
-            //console.log(consultaEmpresas[i].id);
 
             const existeavaliacao = await knex('avaliacoes').where('id_empresa', consultaEmpresas[i].id);
 
